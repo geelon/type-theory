@@ -11,6 +11,7 @@ Type Theory
 -----------
 1. [Intuitionistic Type Theory](martin-lof-intuitionistic-type-theory.pdf), *by Pierre Martin-Löf.*
 2. [Programming in Martin-Löf Type Theory](programming-in-martin-lof-type-theory.pdf), *by Bengt Nordström, Kent Petersson, and Jan M. Smith.*
+3. [Lecture Notes on the Lambda Calculus](selinger-lecture-notes-on-the-lambda-calculus.pdf), *by Peter Selinger.*
 
 Category Theory
 ---------------
