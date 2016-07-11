@@ -1,0 +1,162 @@
+%----------Packages----------
+\usepackage{amsmath,amssymb,amsthm,graphicx,tikz}
+\usepackage{mathrsfs}
+\usepackage[all,arc,cmtip,arrow,frame,matrix]{xy}
+\usepackage{verbatim,float} 
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\renewcommand{\baselinestretch}{1.15}
+\usepackage[hidelinks]{hyperref}
+\usepackage{mathtools}
+
+\usepackage{setspace}
+\setstretch{1.15}
+
+\providecommand{\weakto}{\rightharpoonup}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+
+
+%--Differentiation
+\renewcommand{\d}[1]{\ensuremath{\,\mathrm{d}{#1}}}
+
+\renewcommand{\tilde}[1]{\widetilde{#1}}
+\providecommand{\tr}{\mathrm{tr}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+
+\let\oldto\to
+\renewcommand{\to}{\arr}
+
+\let\oldmod\mod
+\renewcommand{\mod}[1]{\,\left(\mathrm{mod}\, #1 \right)}
+
+\newcommand{\cl}[1]{\text{cl}\hspace{.05cm}(#1)}
+\newcommand{\oline}[1]{\overline{#1}}
+
+\providecommand{\sgn}[1]{\mathrm{sgn}\left( #1\right)}
+
+\providecommand{\col}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+
+\let\propsubset\subset
+\let\propsupset\supset
+%\renewcommand{\subset}{\subseteq}
+%\renewcommand{\supset}{\supseteq}
+\providecommand{\anglebrac}[1]{\left\langle #1\right\rangle}
+
+%------Proof Environment-------%
+\renewcommand{\proof}[2][]{\noindent{\it Proof{#1}. } #2 \hfill $\diamondsuit$}
+\newcommand{\df}[1]{\hbox{\hyperref[#1]{\textsc{def}#1}}}
+\newcommand{\thm}[1]{\hbox{\hyperref[#1]{\textsc{thm}#1}}}
+\newcommand{\cor}[1]{\hbox{\hyperref[#1]{\textsc{cor}#1}}}
+\newcommand{\lem}[1]{\hbox{\hyperref[#1]{\textsc{lem}#1}}}
+\newcommand{\ex}[1]{\hbox{\hyperref[#1]{\textsc{ex}#1}}}
+
+\renewcommand{\and}{\textrm{ and }}
+
+%---------Setminus-----------
+\newcommand\rsetminus{\mathbin{\mathpalette\rsetminusaux\relax}}
+\newcommand\rsetminusaux[2]{\mspace{-4mu}
+  \raisebox{\rsmraise{#1}\depth}{\rotatebox[origin=c]{-20}{$#1\smallsetminus$}}
+ \mspace{-4mu}
+}
+\newcommand\rsmraise[1]{%
+  \ifx#1\displaystyle .8\else
+    \ifx#1\textstyle .8\else
+      \ifx#1\scriptstyle .6\else
+        .45%
+      \fi
+    \fi
+  \fi}
+
+\renewcommand{\setminus}{\rsetminus}
+
+\newcommand{\frakM}{\mathfrak{M}}
+\newcommand{\frakE}{\mathfrak{E}}
+%% bold math capitals
+\newcommand{\bA}{\mathbf{A}}  \newcommand{\bB}{\mathbf{B}}  \newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}  \newcommand{\bE}{\mathbf{E}}  \newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}  \newcommand{\bH}{\mathbf{H}}  \newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}  \newcommand{\bK}{\mathbf{K}}  \newcommand{\bL}{\mathbf{L}}
+\newcommand{\bM}{\mathbf{M}}  \newcommand{\bN}{\mathbf{N}}  \newcommand{\bO}{\mathbf{O}}
+\newcommand{\bP}{\mathbf{P}}  \newcommand{\bQ}{\mathbf{Q}}  \newcommand{\bR}{\mathbf{R}}
+\newcommand{\bS}{\mathbf{S}}  \newcommand{\bT}{\mathbf{T}}  \newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}  \newcommand{\bW}{\mathbf{W}}  \newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}  \newcommand{\bZ}{\mathbf{Z}}
+
+%% blackboard bold math capitals
+\newcommand{\bbA}{\mathbb{A}}      \newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}      \newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}      \newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}      \newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}      \newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}      \newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}      \newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}      \newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}      \newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}      \newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}      \newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}      \newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}      \newcommand{\bbZ}{\mathbb{Z}}
+
+%% script math capitals
+\newcommand{\sA}{\mathscr{A}}  \newcommand{\sB}{\mathscr{B}} \newcommand{\sC}{\mathscr{C}}
+\newcommand{\sD}{\mathscr{D}} \newcommand{\sE}{\mathscr{E}} \newcommand{\sF}{\mathscr{F}}
+\newcommand{\sG}{\mathscr{G}} \newcommand{\sH}{\mathscr{H}} \newcommand{\sI}{\mathscr{I}}
+\newcommand{\sJ}{\mathscr{J}} \newcommand{\sK}{\mathscr{K}} \newcommand{\sL}{\mathscr{L}}
+\newcommand{\sM}{\mathscr{M}}\newcommand{\sN}{\mathscr{N}}\newcommand{\sO}{\mathscr{O}}
+\newcommand{\sP}{\mathscr{P}} \newcommand{\sQ}{\mathscr{Q}} \newcommand{\sR}{\mathscr{R}}
+\newcommand{\sS}{\mathscr{S}} \newcommand{\sT}{\mathscr{T}} \newcommand{\sU}{\mathscr{U}}
+\newcommand{\sV}{\mathscr{V}} \newcommand{\sW}{\mathscr{W}} \newcommand{\sX}{\mathscr{X}}
+\newcommand{\sY}{\mathscr{Y}} \newcommand{\sZ}{\mathscr{Z}}
+
+\renewcommand{\emptyset}{\varnothing}
+
+\providecommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\providecommand{\norm}[1]{\left\lVert #1 \right\rVert}
+
+%\providecommand{\ar}{\rightarrow}
+\providecommand{\arr}{\longrightarrow}
+\providecommand{\sarr}{\rightarrow}
+\newcommand*\surjects{\ensuremath{\relbar\joinrel\twoheadrightarrow}}
+
+\renewcommand{\_}[1]{\underline{ #1 }}
+\DeclareMathOperator{\ext}{ext}
+
+\newcounter{axiomsnum}
+\setcounter{axiomsnum}{-1}
+%----------Theorems----------
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{aside}{Aside}
+\newtheorem{question}{Question}
+\newtheorem{axiom}[axiomsnum]{Axiom}
+\newtheorem{axioms}[axiomsnum]{Axioms}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{nondefinition}[theorem]{Non-Definition}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{warning}[theorem]{Warning}
+%\numberwithin{equation}{section}
+
+
+\theoremstyle{plain}
+\newtheorem{postulate}{Postulate}
+
+
+\newcommand{\problem}[2]{\noindent{\textbf{#1.} \emph{#2}}}
+
+\providecommand{\Hom}{\mathrm{Hom}}
+\providecommand{\End}{\mathrm{End}}
+\providecommand{\id}{\mathrm{id}}
+
+%%% Indented environment
+%%% \indEnv{lemma}{lemma statement}{proof}
+\providecommand{\indEnv}[3]{
+\begin{quote}\vspace{-20pt}\begin{#1} #2 \end{#1} #3\end{quote}}
