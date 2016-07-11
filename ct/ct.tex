@@ -7,6 +7,7 @@
 \providecommand{\Pos}{\mathbf{Pos}}
 \providecommand{\One}{\mathbf{1}}
 \providecommand{\Cat}{\mathbf{Cat}}
+\providecommand{\Rel}{\mathbf{Rel}}
 
 \title{Notes from Awodey's Category Theory}
 \author{Aaron Geelon So}
@@ -40,6 +41,29 @@ A `homomorphism of categories' is called a \textbf{functor}. Specifically, a fun
 \end{enumerate}
 Since every category has an identity functor $1_\mathbf{C}$, the category of all categories $\Cat$ is another example of a category, where functors are the arrows.
 
+\problem{Problem 1}{The objects of $\Rel$ are sets, and arrow $f: A \to B$ is a relation for $A$ to $B$, that is, $f \subseteq A \times B$. The identity relation $\{\langle a,a\rangle : a \in A\}$ is the identity arrow on a set $A$. Composition in $\Rel$ is to be given by 
+\[g \circ f = \{ \langle a,c\rangle \in A \times C : \exists b\left(\langle a,b\rangle \in f \ \mathrm{and}\ \langle b,c\rangle \in g\right)\}
+for $f \subseteq A\times B$ and $g \subseteq B \times C$.\]
+Show that $\Rel$ is a category.}
+
+To show that $\Rel$ is a category, we just need to check composition associativity and composition with identity. Let $f : A \to B$, $g: B \to C$ and $h: C \to D$. Then,
+\begin{align*}
+h \circ (g \circ f) &= \{\langle a,d\rangle :\exists c\left(\exists b\left(\langle a,b\rangle \in f \ \mathrm{and} \ \langle b,c\rangle \in g\right) \ \mathrm{and} \ \langle c,d\rangle \in h\right)\}\\
+&=  \{\langle a,d\rangle :\exists b\left( \langle a,b\rangle \in f \ \mathrm{and} \ \exists c\left(\langle b,c\rangle \in g \ \mathrm{and} \ \langle c,d\rangle \in h\right))\} = (h \circ g) \circ f.
+\end{align*}
+In addition, $\langle a,b\rangle \in 1_B \circ f$ implies that there is some $c$ such that $\langle c,b \rangle \in 1_B$ and $\langle a,c\rangle \in f$. In particular, $c = b$, so that $\langle a,b\rangle \in f$. Thus,
+\[f \subseteq 1_B \circ f.\]
+Now, if $\langle a,b\rangle \in f$, and since $\langle b,b\rangle \in 1_B$, this implies that $\langle a , b\rangle \in 1_B \circ f$. Hence, $1_B \circ f = f$. The analogous argument shows that $f \circ 1_A = f$. This confirms that $\Rel$ is a category.\\
+
+\problem{Problem 2}{Consider the following isomorphisms of categories and determine which hold.
+\begin{enumerate}
+\item[(a)] $\Rel \cong \Rel^{\mathrm{op}}$.
+\item[(b)] $\Sets \cong \Sets^{\mathrm{op}}$.
+\item[(c)] For a fixed set $X$ with powerset $P(X)$, as poset categories $P(X) \cong P(X)^{\mathrm{op}}$, where the arrows in $P(X)$ are subset inclusions.
+\end{enumerate}
+}
+
+\subsubsection{Part A} 
 
 \end{document}
 
