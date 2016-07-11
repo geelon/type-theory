@@ -1,0 +1,49 @@
+\documentclass[reqno]{amsart}
+\input{../preamble}
+
+\providecommand{\dom}{\mathrm{dom}}
+\providecommand{\cod}{\mathrm{cod}}
+\providecommand{\Sets}{\mathbf{Sets}}
+\providecommand{\Pos}{\mathbf{Pos}}
+\providecommand{\One}{\mathbf{1}}
+\providecommand{\Cat}{\mathbf{Cat}}
+
+\title{Notes from Awodey's Category Theory}
+\author{Aaron Geelon So}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Basics}
+A \textbf{category} consists of \emph{objects} and \emph{arrows}. For each arrow $f$ there are objects:
+\[\dom(f),\quad \cod(f)\]
+called the \emph{domain} and \emph{codomain} of $f$. We write $f:A \to B$. There is a composition of arrows $g \circ f$ when $\cod(f) = \dom(g)$. And, for each object $A$, there is an arrow $1_A: A\to A$ called the \emph{identity arrow} of $A$. Composition must be associative, and
+\[f \circ 1_A = f = 1_B \circ f\]
+for all $f: A \to B$.
+
+Examples of categories are $\Sets$, the category of sets and functions. There is also a category of all finite sets and functions between them. Or, a category of finite sets as objects and injective functions as arrows. Other examples are \emph{structured sets}, or sets with some ``structure'' and functions that ``preserve'' it. For example, groups and group homomorphisms, vector spaces and linear maps, topological spaces and continuous maps, differentiable manifolds and smooth maps, posets and monotone functions, and so on. Denote the category of posets by $\Pos$. As another example, if $X$ is a set, then $\mathbf{Dis}(X)$ is a \emph{discrete} category where the only arrows are the identity arrows.
+
+These are examples of \emph{concrete categories}, where the the objects are sets and the arrows are functions. However, there are categories whose objects are not sets or arrows that are not functions. For example, the category $\mathbf{Rel}$ of relations on sets has as arrows $f: A \to B$ subsets $f \subset A\times B$. The identity is $1_A = \{(a,a) : a \in A\}$ and the composite of $f: A\to B$ and $g: B \to C$ is
+\[g \circ f = \{(a,c): (a,b) \in f \textrm{ and } (b,c) \in g\}.\]
+The objects of a category do not need to be sets either. The category $\One$ is just:
+\[*\]
+a single object with its identity arrow. The category $\mathbf{2}$ is:
+\[* \longrightarrow *\]
+two objects with the required identity arrows, and one arrow between. The category $\mathbf{0}$ has no objects and no arrows. 
+
+A `homomorphism of categories' is called a \textbf{functor}. Specifically, a functor $F: \mathbf{C} \to \mathbf{D}$ between categories $\mathbf{C}$ and $\mathbf{D}$ is a mapping of objects to objects and arrows to arrows where 
+\begin{enumerate}
+\item[1.] $F(f: A \to B) = F(f): F(A) \to F(B)$,
+\item[2.] $F(g \circ f) = F(g) \circ F(f)$, and
+\item[3.] $F(1_A) = 1_{F(A)}$.
+\end{enumerate}
+Since every category has an identity functor $1_\mathbf{C}$, the category of all categories $\Cat$ is another example of a category, where functors are the arrows.
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
