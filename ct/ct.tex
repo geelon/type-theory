@@ -8,6 +8,8 @@
 \providecommand{\One}{\mathbf{1}}
 \providecommand{\Cat}{\mathbf{Cat}}
 \providecommand{\Rel}{\mathbf{Rel}}
+\providecommand{\op}[1]{{#1^{\mathrm{op}}}}
+\providecommand{\Monoids}{\mathbf{Monoids}}
 
 \title{Notes from Awodey's Category Theory}
 \author{Aaron Geelon So}
@@ -42,14 +44,14 @@ A `homomorphism of categories' is called a \textbf{functor}. Specifically, a fun
 Since every category has an identity functor $1_\mathbf{C}$, the category of all categories $\Cat$ is another example of a category, where functors are the arrows.
 
 \problem{Problem 1}{The objects of $\Rel$ are sets, and arrow $f: A \to B$ is a relation for $A$ to $B$, that is, $f \subseteq A \times B$. The identity relation $\{\langle a,a\rangle : a \in A\}$ is the identity arrow on a set $A$. Composition in $\Rel$ is to be given by 
-\[g \circ f = \{ \langle a,c\rangle \in A \times C : \exists b\left(\langle a,b\rangle \in f \ \mathrm{and}\ \langle b,c\rangle \in g\right)\}
-for $f \subseteq A\times B$ and $g \subseteq B \times C$.\]
-Show that $\Rel$ is a category.}
+\[g \circ f = \{ \langle a,c\rangle \in A \times C : \exists b\left(\langle a,b\rangle \in f \ \mathrm{and}\ \langle b,c\rangle \in g\right)\}\]
+for $f \subseteq A\times B$ and $g \subseteq B \times C$. Show that $\Rel$ is a category.}
 
 To show that $\Rel$ is a category, we just need to check composition associativity and composition with identity. Let $f : A \to B$, $g: B \to C$ and $h: C \to D$. Then,
 \begin{align*}
-h \circ (g \circ f) &= \{\langle a,d\rangle :\exists c\left(\exists b\left(\langle a,b\rangle \in f \ \mathrm{and} \ \langle b,c\rangle \in g\right) \ \mathrm{and} \ \langle c,d\rangle \in h\right)\}\\
-&=  \{\langle a,d\rangle :\exists b\left( \langle a,b\rangle \in f \ \mathrm{and} \ \exists c\left(\langle b,c\rangle \in g \ \mathrm{and} \ \langle c,d\rangle \in h\right))\} = (h \circ g) \circ f.
+h \circ (g \circ f) 
+&= \{\langle a,d\rangle :\exists c\left(\exists b\left(\langle a,b\rangle \in f \ \mathrm{and} \ \langle b,c\rangle \in g\right) \ \mathrm{and} \ \langle c,d\rangle \in h\right)\}\\
+&=  \{\langle a,d\rangle :\exists b\left( \langle a,b\rangle \in f \ \mathrm{and} \ \exists c\left(\langle b,c\rangle \in g \ \mathrm{and} \ \langle c,d\rangle \in h\right)\right)\} = (h \circ g) \circ f.
 \end{align*}
 In addition, $\langle a,b\rangle \in 1_B \circ f$ implies that there is some $c$ such that $\langle c,b \rangle \in 1_B$ and $\langle a,c\rangle \in f$. In particular, $c = b$, so that $\langle a,b\rangle \in f$. Thus,
 \[f \subseteq 1_B \circ f.\]
@@ -57,14 +59,56 @@ Now, if $\langle a,b\rangle \in f$, and since $\langle b,b\rangle \in 1_B$, this
 
 \problem{Problem 2}{Consider the following isomorphisms of categories and determine which hold.
 \begin{enumerate}
-\item[(a)] $\Rel \cong \Rel^{\mathrm{op}}$.
-\item[(b)] $\Sets \cong \Sets^{\mathrm{op}}$.
-\item[(c)] For a fixed set $X$ with powerset $P(X)$, as poset categories $P(X) \cong P(X)^{\mathrm{op}}$, where the arrows in $P(X)$ are subset inclusions.
+\item[(a)] $\Rel \cong \op{\Rel}$.
+\item[(b)] $\Sets \cong \op{\Sets}$.
+\item[(c)] For a fixed set $X$ with powerset $P(X)$, as poset categories $P(X) \cong \op{P(X)}$, where the arrows in $P(X)$ are subset inclusions.
 \end{enumerate}
 }
 
-\subsubsection{Part A} 
+\subsubsection*{Part A} The categories $\Rel$ and $\Rel^{\mathrm{op}}$ are isomorphic. Define $F: \Rel \to \op{\Rel}$ by
+\[F(A) = \overline{A} \textrm{ and } F(f: A \to B) = F(f): \overline{A} \to \overline{B},\]
+where $F(f) = \overline{f^{-1}}$. We see that $F$ is a functor since
+\[F(g\circ f) = \overline{(g \circ f)^{-1}} = \overline{ f^{-1} \circ g^{-1}} = \overline{g^{-1}} \circ \overline{f^{-1}} = F(g) \circ F(f),\]
+and that
+\[F(1_A) = \overline{1_A^{-1}} = \overline{1_A} = 1_{\overline{A}} = 1_{F(A)}.\]
+Similarly, we can construct $G: \op{\Rel} \to \Rel$ by
+\[G(\overline{A}) = A \textrm{ and } G(\overline{g}:\overline{A} \to \overline{B}) = G(\overline{g}): A \to B,\]
+where $G(\overline{g}) = g^{-1}$. Now, $G$ is a functor since
+\[G(\overline{g} \circ \overline{f}) = f^{-1} \circ g^{-1} = \overline{g^{-1}} \circ \overline{f^{-1}} = G(\overline{g}) \circ G(\overline{f}),\]
+and that
+\[G(1_{\overline{A}}) = G(\overline{1_A}) = 1_A^{-1} = 1_A = 1_{G(A)}.\]
+Finally, $(G \circ F) (f) = G(\overline{f^{-1}}) = f$ and $(G \circ F)(A) = G(A) = A$, so $G \circ F = 1_{\Rel}$. Similarly, we find that $F \circ G = 1_\op{\Rel}$. Therefore, $\Rel$ and $\op\Rel$ are isomorphic.
 
+\subsubsection*{Part B} The categories $\Sets$ and $\op\Sets$ are not isomorphic. Consider the two sets $\emptyset$ and $\{*\}$. Define $f: \emptyset \to \{*\}$. In $\op\Sets$, the corresponding arrow is $\overline{f} : \{*\} \to \emptyset$. However, $\overline{f}$ is clearly not a function since $f(*)$ is an element of $\emptyset$. There is no isomorphism of $\Sets$ and $\op\Sets$.
+
+\subsubsection*{Part C} The categories $P(X)$ and $\op{P(X)}$ are isomorphic. Define the functor $F: P(X) \to \op{P(X)}$ by
+\[F(A) = \overline{A^c}\textrm{ and } F(f: A \subseteq B) = F(f): \overline{A^c} \supseteq\overline{B^c},\]
+where $A \subseteq X$. To see that $F$ is a functor, let $f: A \subseteq B$ and $g: B \subseteq C$. Then, we know that $A^c \supseteq B^c$ and $B^c \supseteq C^c$. In particular, this implies that $F(f)$ and $F(g)$ are witnesses, and that
+\[F(g\circ f) = F(g) \circ F(f).\]
+A similar argument for the analogous functor $G: \op{P(x)} \to P(X)$ can be done. Then, we have
+\[(G \circ F)(A) = G(A^c) = (A^c)^c = A,\]
+and that
+\[G(\circ F)(A \subseteq B) = G( A^c \supseteq B^c) = (A^c)^c \subseteq (B^c)^c = A \subseteq B.\]
+Thus, $G \circ F = 1_{P(X)}$ and likewise, $F\circ G = 1_{\op{P(X)}}$.\\
+
+\problem{Problem 3}{\begin{enumerate}
+\item[(a)] Show that in $\Sets$, the isomorphisms are exactly the bijections.
+\item[(b)] Show that in $\Monoids$, the isomorphisms are exactly the bijective homomorphisms.
+\item[(c)] Show that in $\Pos$, the isomorphisms are \emph{not} the same as the bijective homomorphisms.
+\end{enumerate}}
+
+\subsubsection*{Part A} Let $f: A \to B$ be an isomorphism of sets; that is, there is some arrow $g: B \to C$ such that $g \circ f = 1_A$ and $f\circ g = 1_B$. If $f(x) = f(y)$, then $x = g(f(x)) = g(f(y)) = y$, so that $f$ is injective. And for any $y \in B$, $g(f(g(y))) = y$, so that $f$ is surjective. Thus, every set isomorphism is a bijection. And if $f$ is a bijection, then it has an inverse $f^{-1}$, where $f^{-1} \circ f = 1_A$ and $f \circ f^{-1} = 1_B$. Thus, every bijection is a set isomorphism.
+
+\subsubsection*{Part B} Let $f : A \to B$ be an isomorphism of monoids. Then, there exists a homomorphism $g: B \to A$ such that $g \circ f = 1_A
+$ and $f \circ g = 1_B$. This implies that $f$ has an inverse, so that $f$ is a bijective homomorphism. Now, let $f$ be a bijective homomorphism. Let $g$ be the inverse of $f$. We just need to show that $g$ is a homomorphism of monoids. Since homomorphisms map the unit of monoids to another unit, this implies that $g(u_B) = u_A$, where $u_A$ and $u_B$ are the units of the monoids $A$ and $B$. Further, let $m,n \in B$, where $m = f(a)$ and $n = f(b)$. Then
+\[g(m \cdot_B n) = g(f(a) \cdot_B f(b)) = g(f(a \cdot_A b)) = a \cdot_A b = g(m) \cdot_B g(n).\]
+This shows that $g$ is a homomorphism, and so $f$ is an isomorphism.
+
+\subsubsection*{Part C} Consider the posets $A$ and $B$, where
+\[\mathrm{Objects}(A) = \{a,b,c\} \textrm{ and } \mathrm{Objects}(B) = \{x,y,z\},\] 
+and the arrows besides the identity arrows are
+\[\mathrm{Morphisms}(A) = \{a \to b, a \to c\} \textrm{ and } \mathrm{Morphisms}(B) = \{ x \to y, x \to z, y\to z\}.\]
+Let $F:A \to B$ be the functor uniquely defined by $F(a) = x$, $F(b) = y$, and $F(c) = z$. This functor is a bijective homomorphism. However, it is not an isomorphism of $A$ and $B$. In fact, $A$ and $B$ cannot be isomorphic because the number of morphisms differ.
 \end{document}
 
 %%% Local Variables:
