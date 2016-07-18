@@ -13,6 +13,7 @@ Type Theory
 2. [Programming in Martin-Löf Type Theory](programming-in-martin-lof-type-theory.pdf), *by Bengt Nordström, Kent Petersson, and Jan M. Smith.*
 3. [Lecture Notes on the Lambda Calculus](selinger-lecture-notes-on-the-lambda-calculus.pdf), *by Peter Selinger.*
 4. [Introduction to Type Theory](geuvers-introduction-to-type-theory.pdf), *by Herman Geuvers.*
+5. [Martin-Löf's Type Theory](nordstrom-martin-lofs-type-theory.pdf), *by Bengt Nordström, Kent Petersson, and Jan M. Smith.*
 
 Category Theory
 ---------------
@@ -25,3 +26,4 @@ Homotopy Type Theory
 --------------------
 1. [Homotopy Type Theory](hott.pdf)
 2. [Homotopy Type Theory Lecturs](https://www.cs.cmu.edu/~rwh/courses/hott/), *by Robert Harper.*
+3. [Groupoid Interpretation of Type Theory](groupoid-interpretation-of-type-theory.pdf), *by Martin Hofmann and Thomas Striecher.*
