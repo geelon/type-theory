@@ -27,3 +27,4 @@ Homotopy Type Theory
 1. [Homotopy Type Theory](hott.pdf)
 2. [Homotopy Type Theory Lecturs](https://www.cs.cmu.edu/~rwh/courses/hott/), *by Robert Harper.*
 3. [Groupoid Interpretation of Type Theory](groupoid-interpretation-of-type-theory.pdf), *by Martin Hofmann and Thomas Striecher.*
+4. [The Path Model of Intensional Type Theory](ruch-the-path-model-of-intensional-type-theory.pdf), *by Fabian Ruch.*
