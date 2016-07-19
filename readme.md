@@ -29,3 +29,4 @@ Homotopy Type Theory
 3. [Groupoid Interpretation of Type Theory](groupoid-interpretation-of-type-theory.pdf), *by Martin Hofmann and Thomas Striecher.*
 4. [The Path Model of Intensional Type Theory](ruch-the-path-model-of-intensional-type-theory.pdf), *by Fabian Ruch.*
 5. [Homotopy-Initial Algebras in Type Theory](homotopy-initial-algebras-in-type-theory.pdf), *by Steve Awodey, Nicola Gambino, and Kristina Sojakova.*
+6. [Homotopy Theoretic Models of Identity Types](homotopy-theoretic-models-of-identity-types.pdf), *by Steve Awodey and Michael Warren.*
