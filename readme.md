@@ -30,3 +30,4 @@ Homotopy Type Theory
 4. [The Path Model of Intensional Type Theory](ruch-the-path-model-of-intensional-type-theory.pdf), *by Fabian Ruch.*
 5. [Homotopy-Initial Algebras in Type Theory](homotopy-initial-algebras-in-type-theory.pdf), *by Steve Awodey, Nicola Gambino, and Kristina Sojakova.*
 6. [Homotopy Theoretic Models of Identity Types](homotopy-theoretic-models-of-identity-types.pdf), *by Steve Awodey and Michael Warren.*
+7. [Type Theory and Homotopy](type-theory-and-homotopy.pdf), *by Steve Awodey.*
